@@ -344,71 +344,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5750754935063822863, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_Text
-      value: Retry
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754935063822863, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754935063822863, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754935113653273, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_Text
-      value: Main Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754935113653273, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754935703590473, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Menu Button
-      objectReference: {fileID: 0}
     - target: {fileID: 5750754935703590475, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 277427670}
-    - target: {fileID: 5750754935703590475, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadStartMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 5750754937093592152, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 277427670}
-    - target: {fileID: 5750754937093592152, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754937093592152, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754937093592152, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750754937093592158, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
-        type: 3}
-      propertyPath: m_Name
-      value: Retry Button
-      objectReference: {fileID: 0}
     - target: {fileID: 7857581410490787017, guid: f52c93a68a16e2b43bf3a7a6ccf9048e,
         type: 3}
       propertyPath: m_Name
