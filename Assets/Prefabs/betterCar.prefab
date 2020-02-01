@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8229871421135817625
+--- !u!1 &2253641136128155359
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8231108650244157619}
-  - component: {fileID: 8126380328726215835}
-  - component: {fileID: 8250800814695874731}
-  - component: {fileID: 8281834914761362955}
-  - component: {fileID: 8229871421135817624}
+  - component: {fileID: 2254666710338659829}
+  - component: {fileID: 2140996541788350941}
+  - component: {fileID: 2301428986391254509}
+  - component: {fileID: 2278282795557559117}
+  - component: {fileID: 7886061162963651158}
   m_Layer: 0
-  m_Name: Car
+  m_Name: betterCar
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8231108650244157619
+--- !u!4 &2254666710338659829
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229871421135817625}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 2253641136128155359}
+  m_LocalRotation: {x: 0, y: 0, z: 0.99989825, w: -0.014267584}
+  m_LocalPosition: {x: 4.288656, y: -2.265218, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8126380328726215835
+--- !u!212 &2140996541788350941
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229871421135817625}
+  m_GameObject: {fileID: 2253641136128155359}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,14 +84,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8250800814695874731
+--- !u!50 &2301428986391254509
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229871421135817625}
+  m_GameObject: {fileID: 2253641136128155359}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
@@ -105,13 +105,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &8281834914761362955
+--- !u!61 &2278282795557559117
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229871421135817625}
+  m_GameObject: {fileID: 2253641136128155359}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -131,27 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.01, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &8229871421135817624
+--- !u!114 &7886061162963651158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229871421135817625}
+  m_GameObject: {fileID: 2253641136128155359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 140c7ac3cc9dba24082eac5325e1bdb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c70dbd5a739cc349ac6e27cf767a2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAccel: 2
-  accel: 0.05
-  naturalDecel: 0.02
-  turnAngle: 0.2
-  hyperTurnAngle: 0.4
-  axleTurn: 30
-  degreeOfFacing: 0
-  currentAccel: 0
+  maxAngularVelocity: 15
   drift: 0
-  force: {x: 0, y: 0}
-  driftPoint: {x: 0, y: 0}
-  lastFrameDrift: 0
+  axleTurn: 30
+  force: {x: -0.9995929, y: -0.028532296}
