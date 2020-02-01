@@ -656,6 +656,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1103797792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103797794}
+  - component: {fileID: 1103797793}
+  m_Layer: 0
+  m_Name: Road
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1103797793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103797792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f1b6c6d23499a4ab368a264acd4f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path:
+    points:
+    - {x: 20.985645, y: -62.83449}
+    - {x: 22.369263, y: -63.440323}
+    - {x: 22.519905, y: -62.73651}
+    - {x: 23.948875, y: -62.247154}
+    - {x: 25.425869, y: -61.741352}
+    - {x: 26.724646, y: -62.410343}
+    - {x: 26.74086, y: -60.849228}
+    - {x: 26.76389, y: -58.631958}
+    - {x: 25.034447, y: -58.82434}
+    - {x: 22.817465, y: -58.781803}
+    - {x: 20.96838, y: -58.746323}
+    - {x: 20.005365, y: -58.6057}
+    - {x: 19.4814, y: -60.379353}
+    - {x: 19.073526, y: -61.760025}
+    - {x: 19.666866, y: -62.257053}
+    isClosed: 1
+    autoSetControlPoints: 1
+--- !u!4 &1103797794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103797792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.713942, y: -62.48209, z: -56.875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146948468
 GameObject:
   m_ObjectHideFlags: 0
