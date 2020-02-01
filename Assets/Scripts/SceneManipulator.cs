@@ -11,7 +11,12 @@ public class SceneManipulator : MonoBehaviour
 		SceneManager.LoadScene(0);
 	}
 
+	public void LoadLevel(int levelId) {
+		SceneManager.LoadScene(levelId);
+	}
+
 	public void LoadNextLevel() {
+		Debug.Log("Load Next Level");
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
@@ -20,11 +25,14 @@ public class SceneManipulator : MonoBehaviour
 	}
 
 	IEnumerator WaitAndLoad() {
+		Debug.Log("Waiting " + gameOverDelayInSeconds + " seconds to load Game Over.");
 		yield return new WaitForSeconds(gameOverDelayInSeconds);
+		Debug.Log("Load Game Over");
 		SceneManager.LoadScene("Game Over");
 	}
 
 	public void QuitGame() {
+		Debug.Log("Quit Game");
 		Application.Quit();
 	}
 }
