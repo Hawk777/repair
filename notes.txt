@@ -1,0 +1,23 @@
+Player:
+- move forward
+- turn
+- collect liquid
+- spill
+- collect split pairs
+- deposit
+- collide buildings
+- collide enemies
+Target:
+- get splashed
+- attract enemies
+- some roadblocks
+- get damaged
+- get rescued
+Obstacles:
+- collide with player/enemies
+Dispensaries:
+- provide juice
+Enemies:
+- pathing
+- damage target/player
+- choose target
