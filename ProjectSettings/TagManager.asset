@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 2101253743
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Flying Objects
+    uniqueID: 3807035459
     locked: 0
