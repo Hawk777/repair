@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7240691497499641210}
   m_LocalRotation: {x: 0, y: 0, z: -0.9749538, w: 0.22240782}
   m_LocalPosition: {x: 4.7865524, y: 4.117987, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 642c8e36ca3923e4088062c6114fc436, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8679245, g: 0.1514774, b: 0.1514774, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 1
-  m_Mass: 50.50003
+  m_Mass: 18.18
   m_LinearDrag: 0.95
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -144,11 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140c7ac3cc9dba24082eac5325e1bdb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAccel: 1500
-  accel: 200
-  naturalDecel: 20
-  turnAngle: 90
-  hyperTurnAngle: 120
+  maxAccel: 2000
+  accel: 400
+  naturalDecel: 40
+  turnAngle: 100
+  hyperTurnAngle: 240
   maxAngularVelocity: 30
   maxHyperAngularVelocity: 90
   axleTurn: 30
@@ -170,7 +170,8 @@ MonoBehaviour:
   threshold: 100
   scale: 0.2
   splatterPeriod: 0.1
-  splatterPrefabs: []
-  juiceType: {fileID: 0}
-  tankLevel: 50
+  splatterPrefabs:
+  - {fileID: 2941542962129910406, guid: cdd0199b53dd998a3b2e3f2b34227c47, type: 3}
+  juiceType: {fileID: 2100000, guid: fdd09ec9bfb6a784096ec6bddd726fee, type: 2}
+  tankLevel: 100
   tankCapacity: 100
