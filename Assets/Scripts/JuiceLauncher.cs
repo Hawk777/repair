@@ -22,23 +22,16 @@ public class JuiceLauncher : MonoBehaviour {
 	[Tooltip("The capacity of the juice tank")]
 	public uint tankCapacity = 100;
 
-	// The splatter period in ticks, minus one.
-	private uint splatterCountdownMax;
-
-	// The number of ticks until the next splatter can be placed.
-	private uint splatterCountdown = 0;
+	// The number of seconds until the next splatter can be placed.
+	private float splatterCountdown = 0f;
 
 	// The unit vector to the car side where juice should be thrown during
 	// positive rotation.
 	private static readonly Vector2 sideVector = new Vector2(0, -1);
 
-	void Start() {
-		splatterCountdownMax = (uint) Mathf.Max(0f, splatterPeriod / Time.fixedDeltaTime);
-	}
-
 	void FixedUpdate() {
-		if(splatterCountdown != 0) {
-			--splatterCountdown;
+		if(splatterCountdown > 0f) {
+			splatterCountdown -= Time.fixedDeltaTime;
 		} else if(tankLevel != 0) {
 			Rigidbody2D body = GetComponent<Rigidbody2D>();
 			float avel = body.angularVelocity;
@@ -47,7 +40,7 @@ public class JuiceLauncher : MonoBehaviour {
 				Vector2 target = body.GetRelativePoint(sideVector * distance);
 				GameObject obj = Instantiate(splatterPrefabs[Random.Range(0, splatterPrefabs.Length)], target, Quaternion.identity, null);
 				obj.GetComponent<SpriteRenderer>().color = juiceType.color;
-				splatterCountdown = splatterCountdownMax;
+				splatterCountdown = splatterPeriod;
 				--tankLevel;
 			}
 		}
