@@ -17,6 +17,12 @@ public class car : MonoBehaviour
     public Vector2 force; // the RELATIVE point around which we are drifting
     public GameObject minimapSprite;
 
+    static int maxHealth = 5;
+    public int currentHealth;
+    static uint defaultInvuln = 120;
+    uint invuln = 0;
+    static int damagingVelocity = 30;
+
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
     private Rigidbody2D rb2D;
@@ -31,16 +37,18 @@ public class car : MonoBehaviour
         launcher = GetComponent<JuiceLauncher>();
         GameObject mini = Instantiate(minimapSprite, transform.position, Quaternion.identity, transform);
         mini.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+        currentHealth = 5;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         drift = Input.GetButton("Fire1"); //default mapped to Ctrl.
         // if we're using a controller with variable input (like a gamepad axis), change the int below to float
         int turn =0, forward=0;
         turn = (int)Input.GetAxisRaw("Horizontal");
         forward = (int)Input.GetAxisRaw("Vertical");
+        turn *= (int)Mathf.Sign(forward);
 
         if (forward == 0) {
             currentAccel = Mathf.Sign(currentAccel) * Mathf.Max(Mathf.Abs(currentAccel) - naturalDecel, 0);
@@ -88,6 +96,46 @@ public class car : MonoBehaviour
 
         liquid.localScale = new Vector3(0.5f * launcher.tankLevel / launcher.tankCapacity, 0.5f * launcher.tankLevel / launcher.tankCapacity, 1);
         liquid.GetComponent<SpriteRenderer>().color = launcher.juiceType.color;
+
+        if (invuln < 0) invuln--;
         //TODO: check the tag of the road we're on, and change acceleration/velocity/angularVelocity accordingly
     }
+
+    public bool attackable
+    {
+        get
+        {
+            return currentHealth != 0;
+        }
+    }
+
+    void TakeDamage()
+    {
+        if (invuln == 0)
+        {
+            currentHealth--;
+            invuln = defaultInvuln;
+            if (currentHealth <= 0)
+            {
+                // play explosion, set game over
+            }
+            else if (currentHealth <= 2)
+            {
+                // play heavy smoke on the car
+            }
+            else if (currentHealth <= 4)
+            {
+                // play normal smoke on the car
+            }
+        }
+    }
+    /*
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        if (rb2D.velocity > damagingVelocity || collision.gameObject.tag == "Enemy")
+        {
+            rb2D.AddForceAtPosition(new Vector2(0, 100), collision.GetContact);
+        }
+    }
+    */
 }
