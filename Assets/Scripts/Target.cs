@@ -29,6 +29,9 @@ public class Target : MonoBehaviour {
 	// The cloud dispersal particles.
 	private ParticleSystem cloudDispersal;
 
+	// The minimap sprite.
+	private SpriteRenderer minimapDot;
+
 	void Start() {
 		List<SpriteRenderer> inputs_ = new List<SpriteRenderer>();
 		List<SpriteRenderer> outputs_ = new List<SpriteRenderer>();
@@ -45,6 +48,7 @@ public class Target : MonoBehaviour {
 		inputs = inputs_.ToArray();
 		outputs = outputs_.ToArray();
 		cloudDispersal = transform.Find("Cloud Dispersal").GetComponent<ParticleSystem>();
+		minimapDot = transform.Find("Minimap").GetComponent<SpriteRenderer>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -97,6 +101,9 @@ public class Target : MonoBehaviour {
 
 		// Kill cloud completely.
 		cloud.enabled = false;
+
+		// Remove from minimap.
+		minimapDot.enabled = false;
 	}
 
 	public bool attackable {
