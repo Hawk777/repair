@@ -23,6 +23,31 @@ public class Path {
 		}
 	}
 
+	public bool IsClosed {
+		get {
+			return isClosed;
+		}
+		set {
+			if (isClosed != value) {
+				isClosed = value;
+
+				if (isClosed) {
+					points.Add(points[points.Count - 1] * 2 - points[points.Count - 2]);
+					points.Add(points[0] * 2 - points[1]);
+					if (autoSetControlPoints) {
+						AutoSetAnchorControlPoints(0);
+						AutoSetAnchorControlPoints(points.Count - 3);
+					}
+				} else {
+					points.RemoveRange(points.Count - 2, 2);
+					if (autoSetControlPoints) {
+						AutoSetStartAndEndControls();
+					}
+				}
+			}
+		}
+	}
+
 	public bool AutoSetControlPoints {
 		get {
 			return autoSetControlPoints;
@@ -56,6 +81,31 @@ public class Path {
 
 		if (autoSetControlPoints) {
 			AutoSetAllAffectedControlPoints(points.Count - 1);
+		}
+	}
+
+	public void SplitSegment(Vector2 anchorPos, int segmentIndex) {
+		points.InsertRange(segmentIndex * 3 + 2, new Vector2[] { Vector2.zero, anchorPos, Vector2.zero });
+		if (autoSetControlPoints) {
+			AutoSetAllAffectedControlPoints(segmentIndex * 3 + 3);
+		}
+		else {
+			AutoSetAnchorControlPoints(segmentIndex * 3 + 3);
+		}
+	}
+
+	public void DeleteSegment(int anchorIndex) {
+		if (NumSegments > 2 || !isClosed && NumSegments > 1) {
+			if (anchorIndex == 0) {
+				if (isClosed) {
+					points[points.Count - 1] = points[2];
+				}
+				points.RemoveRange(0, 3);
+			} else if (!isClosed && anchorIndex == points.Count - 1) {
+				points.RemoveRange(anchorIndex - 2, 3);
+			} else {
+				points.RemoveRange(anchorIndex - 1, 3);
+			}
 		}
 	}
 
@@ -96,25 +146,6 @@ public class Path {
 				float distance = (points[LoopIndex(anchorIndex)] - points[LoopIndex(correspondingControlIndex)]).magnitude;
 				Vector2 direction = (points[LoopIndex(anchorIndex)] - pos).normalized;
 				points[LoopIndex(correspondingControlIndex)] = points[LoopIndex(anchorIndex)] + direction * distance;
-			}
-		}
-	}
-
-	public void ToggleClosed() {
-		isClosed = !isClosed;
-
-		if (isClosed) {
-			points.Add(points[points.Count - 1] * 2 - points[points.Count - 2]);
-			points.Add(points[0] * 2 - points[1]);
-			if (autoSetControlPoints) {
-				AutoSetAnchorControlPoints(0);
-				AutoSetAnchorControlPoints(points.Count - 3);
-			}
-		}
-		else {
-			points.RemoveRange(points.Count - 2, 2);
-			if (autoSetControlPoints) {
-				AutoSetStartAndEndControls();
 			}
 		}
 	}
