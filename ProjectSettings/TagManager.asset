@@ -7,7 +7,6 @@ TagManager:
   - Car
   - Enemy
   - Splatter
-  - Target
   layers:
   - Default
   - TransparentFX
