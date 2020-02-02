@@ -16,6 +16,6 @@ public class CameraFollow : MonoBehaviour
     {
         transform.position = new Vector3(playerTransform.position.x,playerTransform.position.y,transform.position.z);
 
-        transform.rotation = playerTransform.rotation * Quaternion.Euler(0,0,-90);
+        transform.rotation = playerTransform.rotation * Quaternion.Euler(0,0,0);
     }
 }
