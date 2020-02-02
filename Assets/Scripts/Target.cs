@@ -98,4 +98,10 @@ public class Target : MonoBehaviour {
 		// Kill cloud completely.
 		cloud.enabled = false;
 	}
+
+	public bool attackable {
+		get {
+			return !solved && hp != 0;
+		}
+	}
 }
