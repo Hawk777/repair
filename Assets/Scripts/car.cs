@@ -50,7 +50,7 @@ public class car : MonoBehaviour
             currentAccel = 0;
         }
         else { currentAccel = Mathf.Sign(currentAccel) * (Mathf.Abs(currentAccel) - naturalDecel); }
-        
+
         //if (currentAccel!=0) degreeOfFacing += -turn * turnAngle * 2 * Mathf.Min(maxAccel/2,currentAccel)/maxAccel;
 
         // push car by currentAccel units in the direction of its facing
@@ -78,26 +78,14 @@ public class car : MonoBehaviour
         // ie. a left turn throws liquid right, at a distance according to angular velocity.  Just send a message to the turret script to throw some goo, give angular velocity.
         //Maybe it only fires periodically instead of every frame.
 
-        if (!drift)
-        {
-            // push car by currentAccel units in the direction of its facing
-            //transform.eulerAngles = new Vector3(0, 0, degreeOfFacing);
-            force = new Vector2(-Mathf.Sin((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad), Mathf.Cos((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad));
-            rb2D.AddForce(force * currentAccel);
-            //rb2D.MoveRotation(degreeOfFacing + turn * turnAngle * Mathf.Min(maxAccel, currentAccel) / maxAccel);
-            rb2D.AddTorque(-turn* turnAngle*rb2D.mass);
-            if (rb2D.angularVelocity > maxAngularVelocity) rb2D.angularVelocity = maxAngularVelocity;
-            if (rb2D.angularVelocity < -maxAngularVelocity) rb2D.angularVelocity = -maxAngularVelocity;
-        }
-        else
-        {
-            force = new Vector2(Mathf.Cos((rb2D.rotation + turn * axleTurn) * Mathf.Deg2Rad), Mathf.Sin((rb2D.rotation + turn * axleTurn) * Mathf.Deg2Rad));
-            rb2D.AddForce(force * currentAccel);
-            //rb2D.MoveRotation(degreeOfFacing + turn * turnAngle * Mathf.Min(maxAccel, currentAccel) / maxAccel);
-            rb2D.AddTorque(-turn* hyperTurnAngle*rb2D.mass);
-            if (rb2D.angularVelocity > maxHyperAngularVelocity) rb2D.angularVelocity = maxHyperAngularVelocity;
-            if (rb2D.angularVelocity < -maxHyperAngularVelocity) rb2D.angularVelocity = -maxHyperAngularVelocity;
-        }
+        force = new Vector2(-Mathf.Sin((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad), Mathf.Cos((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad));
+        rb2D.AddForce(force * currentAccel);
+        float angle = drift ? hyperTurnAngle : turnAngle;
+        float maxAV = drift ? maxHyperAngularVelocity : maxAngularVelocity;
+
+        rb2D.AddTorque(-turn * angle * rb2D.mass);
+        if (rb2D.angularVelocity > maxAV) rb2D.angularVelocity = maxAV;
+        else if (rb2D.angularVelocity < -maxAV) rb2D.angularVelocity = -maxAV;
 
         liquid.localScale = new Vector3(0.5f * launcher.tankLevel / launcher.tankCapacity, 0.5f * launcher.tankLevel / launcher.tankCapacity, 1);
         liquid.GetComponent<SpriteRenderer>().color = launcher.juiceType.color;
