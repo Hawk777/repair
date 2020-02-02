@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140c7ac3cc9dba24082eac5325e1bdb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAccel: 1000
+  maxAccel: 1500
   accel: 200
   naturalDecel: 20
   turnAngle: 90
