@@ -19,9 +19,9 @@ public class car : MonoBehaviour
 
     static int maxHealth = 5;
     public int currentHealth;
-    static uint defaultInvuln = 120;
+    static uint defaultInvuln = 240;
     uint invuln = 0;
-    static int damagingVelocity = 20;
+    [SerializeField] int damagingVelocity = 20;
 
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
