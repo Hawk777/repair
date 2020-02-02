@@ -44,6 +44,9 @@ TagManager:
   - name: Ground
     uniqueID: 2101253743
     locked: 0
+  - name: Splatters
+    uniqueID: 4245691489
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
