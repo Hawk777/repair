@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5412218734618285964}
   - component: {fileID: 5412218734618285967}
   - component: {fileID: 5412218734618285960}
+  - component: {fileID: 3223490558521346868}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Enemy
@@ -170,3 +171,17 @@ MonoBehaviour:
   wanderThreshold: 1
   wanderStep: 200
   wanderDelay: 3
+--- !u!114 &3223490558521346868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412218734618285966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b9f99e5f669023ab973cafcf353806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 10
+  interval: 2
