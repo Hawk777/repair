@@ -26,17 +26,17 @@ PrefabInstance:
     - target: {fileID: 5412218734618285963, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -47.524357
+      value: 175.7
       objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285963, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 124.439026
+      value: 246.6
       objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285963, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 176
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285963, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
@@ -81,32 +81,37 @@ PrefabInstance:
     - target: {fileID: 5412218734618285963, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285963, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285964, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 4.775
+      value: 19.1
       objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285964, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 4.775
       objectReference: {fileID: 0}
+    - target: {fileID: 5412218734618285964, guid: 46f759f5faebc7872b9f32a36e1aefd0,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285965, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 6200000, guid: 918b8467b09a467448916ece29085d80, type: 2}
+      objectReference: {fileID: 6200000, guid: c3f97b98abeae7246910d7adc3b67bb5, type: 2}
     - target: {fileID: 5412218734618285965, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
       propertyPath: m_Mass
-      value: 875
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5412218734618285966, guid: 46f759f5faebc7872b9f32a36e1aefd0,
         type: 3}
