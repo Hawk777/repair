@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class car : MonoBehaviour
 {
-    public float maxAccel = 2f;
-    public float accel = 0.05f;
-    public float naturalDecel = 0.02f;
-    public float turnAngle = 0.2f;
-    public float hyperTurnAngle = 0.4f;
+    public float maxAccel = 3000f;
+    public float accel = 100f;
+    public float naturalDecel = 20f;
+    public float turnAngle = 30f;
+    public float hyperTurnAngle = 60f;
     public float maxAngularVelocity = 30f;
     public float maxHyperAngularVelocity = 90f;
     public float axleTurn = 30f;
-    public float degreeOfFacing = 0f;
     public float currentAccel = 0f;
     public bool drift = false;
-    public Vector2 force;
-    public Vector2 driftPoint; // the RELATIVE point around which we are drifting
-    public bool lastFrameDrift = false;
-    public int whichLiquid = 0;
-    public int liquidAmount = 0;
+    public Vector2 force; // the RELATIVE point around which we are drifting
 
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
-    //private JuiceLauncher launcher;
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
     private Rigidbody2D rb2D;
     // Start is called before the first frame update
@@ -82,24 +76,21 @@ public class car : MonoBehaviour
 
         if (!drift)
         {
-            if (currentAccel != 0) degreeOfFacing += -turn * hyperTurnAngle * 2 * Mathf.Min(maxAccel / 2, currentAccel) / maxAccel;
-
             // push car by currentAccel units in the direction of its facing
             //transform.eulerAngles = new Vector3(0, 0, degreeOfFacing);
             force = new Vector2(Mathf.Cos((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad), Mathf.Sin((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad));
             rb2D.AddForce(force * currentAccel);
             //rb2D.MoveRotation(degreeOfFacing + turn * turnAngle * Mathf.Min(maxAccel, currentAccel) / maxAccel);
-            rb2D.AddTorque(-turn* turnAngle);
+            rb2D.AddTorque(-turn* turnAngle*rb2D.mass);
             if (rb2D.angularVelocity > maxAngularVelocity) rb2D.angularVelocity = maxAngularVelocity;
             if (rb2D.angularVelocity < -maxAngularVelocity) rb2D.angularVelocity = -maxAngularVelocity;
         }
         else
         {
-            if (currentAccel != 0) degreeOfFacing += -turn * turnAngle * 2 * Mathf.Min(maxAccel / 2, currentAccel) / maxAccel;
             force = new Vector2(Mathf.Cos((rb2D.rotation + turn * axleTurn) * Mathf.Deg2Rad), Mathf.Sin((rb2D.rotation + turn * axleTurn) * Mathf.Deg2Rad));
             rb2D.AddForce(force * currentAccel);
             //rb2D.MoveRotation(degreeOfFacing + turn * turnAngle * Mathf.Min(maxAccel, currentAccel) / maxAccel);
-            rb2D.AddTorque(-turn* hyperTurnAngle);
+            rb2D.AddTorque(-turn* hyperTurnAngle*rb2D.mass);
             if (rb2D.angularVelocity > maxHyperAngularVelocity) rb2D.angularVelocity = maxHyperAngularVelocity;
             if (rb2D.angularVelocity < -maxHyperAngularVelocity) rb2D.angularVelocity = -maxHyperAngularVelocity;
         }

@@ -15,10 +15,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if the player is too far away, don't do anything.  If they are close enough to render, attack the nearest thing that can be attacked (either player or objectives
+        // if the player is too far away, don't do anything.  If they are close enough to render, attack the nearest thing that can be attacked (either player or objectives)
         GameObject player = GameManager.getPlayer();
 
-        // TODO
+        // TODO: 
         
     }
 }
