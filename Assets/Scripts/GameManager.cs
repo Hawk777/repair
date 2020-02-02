@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     Camera mainCamera;
-    Enemy[] enemies;
     static GameObject player;
     static Rigidbody2D playerBody;
 
