@@ -2,9 +2,6 @@
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
-	[Tooltip("The thing to attack")]
-	public Rigidbody2D target;
-
 	// The agent for this enemy.
 	private NavMeshAgent agent;
 
