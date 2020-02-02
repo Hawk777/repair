@@ -60,7 +60,7 @@ public class EnemyMotion : MonoBehaviour {
 			if(closest != null && closestDistSq <= viewDistanceSq) {
 				agent.SetDestination(closest.transform.position);
 			} else {
-				if(!agent.pathPending && (new Vector2(agent.destination.x, agent.destination.y) - body.position).sqrMagnitude <= wanderThreshold * wanderThreshold) {
+				if(!agent.pathPending && ((Vector2) agent.destination - body.position).sqrMagnitude <= wanderThreshold * wanderThreshold) {
 					if(wanderDelayLeft < 0) {
 						agent.SetDestination(body.position + Random.insideUnitCircle * wanderStep);
 						wanderDelayLeft = Random.Range(0f, wanderDelay);
