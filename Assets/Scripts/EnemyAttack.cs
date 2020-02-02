@@ -29,11 +29,13 @@ public class EnemyAttack : MonoBehaviour {
 			GameObject closest = null;
 			float closestDistSq = 1f / 0f;
 			foreach(GameObject i in targets) {
-				if(i.GetComponent<Target>().attackable) {
-					float distSq = (i.GetComponent<Rigidbody2D>().position - body.position).sqrMagnitude;
-					if(distSq < closestDistSq) {
-						closest = i;
-						closestDistSq = distSq;
+				if(i != null) { /* overloaded to check not destroyed */
+					if(i.GetComponent<Target>().attackable) {
+						float distSq = (i.GetComponent<Rigidbody2D>().position - body.position).sqrMagnitude;
+						if(distSq < closestDistSq) {
+							closest = i;
+							closestDistSq = distSq;
+						}
 					}
 				}
 			}
