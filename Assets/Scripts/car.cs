@@ -15,6 +15,7 @@ public class car : MonoBehaviour
     public float currentAccel = 0f;
     public bool drift = false;
     public Vector2 force; // the RELATIVE point around which we are drifting
+    public GameObject minimapSprite;
 
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
@@ -28,6 +29,8 @@ public class car : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         liquid = transform.Find("carliquid");
         launcher = GetComponent<JuiceLauncher>();
+        GameObject mini = Instantiate(minimapSprite, transform.position, Quaternion.identity, transform);
+        mini.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
     }
 
     // Update is called once per frame
