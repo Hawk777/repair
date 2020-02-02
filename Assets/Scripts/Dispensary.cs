@@ -11,7 +11,7 @@ public class Dispensary : MonoBehaviour
     public GameObject player;
 
     private SpriteRenderer render;
-    private JuiceLauncher launcher;
+    //private JuiceLauncher launcher;
     private BoxCollider2D collider;
 
     void Start()
@@ -23,7 +23,7 @@ public class Dispensary : MonoBehaviour
         // spout is on the relative right of the dispenser, so check relative distance to player
         // change liquid color according to liquid
         render.color = liquid.color;
-        launcher = GetComponent<JuiceLauncher>();
+        //launcher = player.TryGetComponent<JuiceLauncher>();
     }
 
     void FixedUpdate()
@@ -39,12 +39,13 @@ public class Dispensary : MonoBehaviour
         // launcher = player.FindObjectOfType<JuiceLauncher>(); // this line is killing me
         fill();
     }
-
     void fill()
     {
+        /*
         if (launcher.juiceType != liquid) launcher.tankLevel--;
         if (launcher.tankLevel == 0) launcher.juiceType = liquid;
         if (launcher.juiceType == liquid)launcher.tankLevel++;
         if (launcher.tankLevel > launcher.tankCapacity)launcher.tankLevel = launcher.tankCapacity;
+        */
     }
 }
