@@ -32,6 +32,9 @@ public class Target : MonoBehaviour {
 	// The minimap sprite.
 	private SpriteRenderer minimapDot;
 
+	// The game manager.
+	private GameManager manager;
+
 	void Start() {
 		List<SpriteRenderer> inputs_ = new List<SpriteRenderer>();
 		List<SpriteRenderer> outputs_ = new List<SpriteRenderer>();
@@ -49,6 +52,7 @@ public class Target : MonoBehaviour {
 		outputs = outputs_.ToArray();
 		cloudDispersal = transform.Find("Cloud Dispersal").GetComponent<ParticleSystem>();
 		minimapDot = transform.Find("Minimap").GetComponent<SpriteRenderer>();
+		manager = GameManager.get();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -56,6 +60,7 @@ public class Target : MonoBehaviour {
 			if(other.GetComponent<SpriteRenderer>().color == solveGoop.color) {
 				GetComponent<Rigidbody2D>().simulated = false;
 				solved = true;
+				manager.CheckTargets();
 				StartCoroutine(AnimateSolving());
 			}
 		}
@@ -115,6 +120,7 @@ public class Target : MonoBehaviour {
 	public void Hurt() {
 		if(--hp == 0) {
 			GetComponent<Rigidbody2D>().simulated = false;
+			manager.CheckTargets();
 			StartCoroutine(AnimateDeath());
 		}
 	}
