@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour {
 			outOfTargetsMessage.SetActive(true);
 		}
 		yield return new WaitForSeconds(delay);
+		MusicManager.Get().SwitchScene(nextScene);
 		SceneManager.LoadSceneAsync(nextScene);
 	}
 }
