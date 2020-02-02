@@ -1,0 +1,28 @@
+﻿Made at
+Global Game Jam 2020 Vancouver
+by
+
+Alexander Gagné (programming)
+Christopher Head (programming)
+Curtis Hodgins (programming & design)
+Wendy Lin (art & music)
+
+Sounds used from Freesound:
+
+"Sound of a Seal" by florianreichelt
+"bunny sneeze" by lucyve
+"44.wav" by y89312
+"Mr Dog_01.wav" by apolloaiello
+"Duck Quack" by qubodup
+"Goat Sound 2.wav" by Erokia
+"Car takes out Car" by FFKoenigsegg20012017
+"Cat 1" by DiegoAngelGaming
+"Hippo-Pet.aif" by roubignolle
+"Splat" by JustInvoke
+"Mud Splat" by Breviceps
+"Renault 19 underhood acceleration" by lovretta
+"Nissan Maxima handbrake turn (04-25-2009).wav" by audible-edge
+"Slowdown_Short_Down.wav" by anomalous_underdog
+"Slowdown_Short_Up.wav" by anomalous_underdog
+"metal thud" by zaneclampett
+"Poof (3, varying degrees of intensity)" by mendihola
