@@ -1,24 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
-{
-    Rigidbody2D enemyBody;
+public class Enemy : MonoBehaviour {
+	[Tooltip("The thing to attack")]
+	public Rigidbody2D target;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        enemyBody = GetComponentInParent<Rigidbody2D>();
-    }
+	// The agent for this enemy.
+	private NavMeshAgent agent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        // if the player is too far away, don't do anything.  If they are close enough to render, attack the nearest thing that can be attacked (either player or objectives)
-        GameObject player = GameManager.getPlayer();
+	void Start() {
+		agent = GetComponent<NavMeshAgent>();
+		agent.updateRotation = false;
+		agent.updateUpAxis = false;
+	}
 
-        // TODO: 
-        
-    }
+	void FixedUpdate() {
+		agent.SetDestination(target.position);
+	}
 }
