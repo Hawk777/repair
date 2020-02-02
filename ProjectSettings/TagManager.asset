@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Splatter
+  - Target
+  - Grass
+  - Road
   layers:
   - Default
   - TransparentFX
