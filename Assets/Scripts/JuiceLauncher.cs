@@ -27,7 +27,7 @@ public class JuiceLauncher : MonoBehaviour {
 
 	// The unit vector to the car side where juice should be thrown during
 	// positive rotation.
-	private static readonly Vector2 sideVector = new Vector2(0, -1);
+	private static readonly Vector2 sideVector = new Vector2(1, 0);
 
 	void FixedUpdate() {
 		if(splatterCountdown > 0f) {
