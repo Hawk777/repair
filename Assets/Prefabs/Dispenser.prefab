@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowDistance: 4
   liquid: {fileID: 2100000, guid: fdd09ec9bfb6a784096ec6bddd726fee, type: 2}
-  player: {fileID: 0}
+  player: {fileID: 7240691497499641210, guid: fbfd71c838ad7a742b6b50c7ee8631ea, type: 3}
 --- !u!50 &142684321661991666
 Rigidbody2D:
   serializedVersion: 4

@@ -23,7 +23,7 @@ public class Dispensary : MonoBehaviour
         // spout is on the relative right of the dispenser, so check relative distance to player
         // change liquid color according to liquid
         render.color = liquid.color;
-        //launcher = player.TryGetComponent<JuiceLauncher>();
+        //launcher = player.GetComponent<JuiceLauncher>();
     }
 
     void FixedUpdate()
@@ -33,12 +33,11 @@ public class Dispensary : MonoBehaviour
 
     void OnTriggerStay2D()
     {
-        launcher = GetComponent<JuiceLauncher>();
+        launcher = FindObjectOfType<JuiceLauncher>();
         fill();
     }
     void fill()
     {
-        
         if (launcher.juiceType != liquid) launcher.tankLevel--;
         if (launcher.tankLevel == 0) launcher.juiceType = liquid;
         if (launcher.juiceType == liquid)launcher.tankLevel++;

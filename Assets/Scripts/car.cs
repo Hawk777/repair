@@ -6,9 +6,9 @@ public class car : MonoBehaviour
 {
     public float maxAccel = 3000f;
     public float accel = 100f;
-    public float naturalDecel = 20f;
-    public float turnAngle = 30f;
-    public float hyperTurnAngle = 60f;
+    public float naturalDecel = 40f;
+    public float turnAngle = 1f;
+    public float hyperTurnAngle = 2f;
     public float maxAngularVelocity = 30f;
     public float maxHyperAngularVelocity = 90f;
     public float axleTurn = 30f;
