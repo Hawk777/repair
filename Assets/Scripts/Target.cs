@@ -104,4 +104,27 @@ public class Target : MonoBehaviour {
 			return !solved && hp != 0;
 		}
 	}
+
+	public void Hurt() {
+		if(--hp == 0) {
+			GetComponent<Rigidbody2D>().simulated = false;
+			StartCoroutine(AnimateDeath());
+		}
+	}
+
+	private IEnumerator<WaitForSeconds> AnimateDeath() {
+		// Remove animals.
+		foreach(SpriteRenderer i in inputs) {
+			i.enabled = false;
+		}
+
+		// Poof.
+		cloudDispersal.Play();
+		while(cloudDispersal.isPlaying) {
+			yield return new WaitForSeconds(1);
+		}
+
+		// Destroy object.
+		Destroy(gameObject);
+	}
 }
