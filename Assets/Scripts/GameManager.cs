@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerBody = player.GetComponent<Rigidbody2D>();
 
-
+        // make colors.  these colors implicitly do different things
     }
 
     void Update()
     {
-        
+        // update enemies.  if dispensaries and objectives are time-based, update those too.
     }
 }
