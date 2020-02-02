@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public float damper = 0.1f;
     private Transform playerTransform;
     void Start()
     {
@@ -11,10 +12,10 @@ public class CameraFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         transform.position = new Vector3(playerTransform.position.x,playerTransform.position.y,transform.position.z);
 
-        transform.rotation = new Quaternion(transform.rotation.x,transform.rotation.y,(playerTransform.rotation.z+90f)%360,transform.rotation.w);
+        transform.rotation = playerTransform.rotation * Quaternion.Euler(0,0,-90);
     }
 }
