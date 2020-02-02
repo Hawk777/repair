@@ -11,7 +11,7 @@ public class Dispensary : MonoBehaviour
     public GameObject player;
 
     private SpriteRenderer render;
-    //private JuiceLauncher launcher;
+    private JuiceLauncher launcher;
     private BoxCollider2D collider;
 
     void Start()
@@ -28,24 +28,21 @@ public class Dispensary : MonoBehaviour
 
     void FixedUpdate()
     {
-        GameObject player = GameObject.FindWithTag("Player");
 
-        float dist = Vector2.Distance(player.transform.position, transform.position + new Vector3(flowDistance,0,0));
-        if (dist < flowDistance) fill();
     }
 
     void OnTriggerStay2D()
     {
-        // launcher = player.FindObjectOfType<JuiceLauncher>(); // this line is killing me
+        launcher = GetComponent<JuiceLauncher>();
         fill();
     }
     void fill()
     {
-        /*
+        
         if (launcher.juiceType != liquid) launcher.tankLevel--;
         if (launcher.tankLevel == 0) launcher.juiceType = liquid;
         if (launcher.juiceType == liquid)launcher.tankLevel++;
         if (launcher.tankLevel > launcher.tankCapacity)launcher.tankLevel = launcher.tankCapacity;
-        */
+        
     }
 }
