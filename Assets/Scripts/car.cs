@@ -38,18 +38,14 @@ public class car : MonoBehaviour
         int turn =0, forward=0;
         turn = (int)Input.GetAxisRaw("Horizontal");
         forward = (int)Input.GetAxisRaw("Vertical");
-        if (Mathf.Abs(currentAccel + forward*accel) > maxAccel) {
-            currentAccel = Mathf.Sign(currentAccel)*maxAccel;
+
+        if (forward == 0) {
+            currentAccel = Mathf.Sign(currentAccel) * Mathf.Max(Mathf.Abs(currentAccel) - naturalDecel, 0);
+        } else if (currentAccel != 0 && Mathf.Sign(forward) != Mathf.Sign(currentAccel)) {
+            currentAccel = currentAccel + forward * accel - Mathf.Sign(currentAccel) * naturalDecel;
+        } else {
+            currentAccel = Mathf.Sign(currentAccel) * Mathf.Min(Mathf.Abs(currentAccel + (forward * accel)), maxAccel);
         }
-        else
-        {
-            currentAccel += forward*accel;
-        }
-        if (Mathf.Abs(currentAccel) < naturalDecel)
-        {
-            currentAccel = 0;
-        }
-        else { currentAccel = Mathf.Sign(currentAccel) * (Mathf.Abs(currentAccel) - naturalDecel); }
 
         //if (currentAccel!=0) degreeOfFacing += -turn * turnAngle * 2 * Mathf.Min(maxAccel/2,currentAccel)/maxAccel;
 
