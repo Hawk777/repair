@@ -38,7 +38,7 @@ public class JuiceLauncher : MonoBehaviour {
 			if(Mathf.Abs(avel) >= threshold) {
 				float distance = avel * scale;
 				Vector2 target = body.GetRelativePoint(sideVector * distance);
-				GameObject obj = Instantiate(splatterPrefabs[Random.Range(0, splatterPrefabs.Length)], target, Quaternion.identity, null);
+				GameObject obj = Instantiate(splatterPrefabs[Random.Range(0, splatterPrefabs.Length)], target, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), null);
 				obj.GetComponent<SpriteRenderer>().color = juiceType.color;
 				splatterCountdown = splatterPeriod;
 				--tankLevel;
