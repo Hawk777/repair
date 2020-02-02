@@ -639,11 +639,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140c7ac3cc9dba24082eac5325e1bdb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAccel: 40
-  accel: 20
-  naturalDecel: 20
-  turnAngle: 2
-  hyperTurnAngle: 6
+  maxAccel: 100
+  accel: 40
+  naturalDecel: 80
+  turnAngle: 4
+  hyperTurnAngle: 12
   maxAngularVelocity: 10
   maxHyperAngularVelocity: 30
   axleTurn: 30
