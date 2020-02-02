@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5026337637413148913}
   - component: {fileID: 5209751386399395857}
   m_Layer: 0
-  m_Name: Splatter
+  m_Name: Splatter3
   m_TagString: Splatter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -49275807
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec7a4df0f19cb7ce9815cc1de5eec1b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c30d704f6b20e441a907db85e120215, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

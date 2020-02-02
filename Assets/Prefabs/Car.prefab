@@ -663,11 +663,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427dd61b36f9530be926c7bf6948341d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 70
+  threshold: 1
   scale: 0.2
   splatterPeriod: 0.1
   splatterPrefabs:
   - {fileID: 2941542962129910406, guid: cdd0199b53dd998a3b2e3f2b34227c47, type: 3}
+  - {fileID: 2941542962129910406, guid: 4e84b6f8f93d8dd4e9dda3e05658b98c, type: 3}
+  - {fileID: 2941542962129910406, guid: 4e597e13317baa347b39daa777720038, type: 3}
   juiceType: {fileID: 2100000, guid: fdd09ec9bfb6a784096ec6bddd726fee, type: 2}
   tankLevel: 100
   tankCapacity: 100
