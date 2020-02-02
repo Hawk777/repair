@@ -9,10 +9,13 @@ public class Target : MonoBehaviour {
 	public bool solved;
 
 	[Tooltip("How long it takes the smoke to fully appear")]
-	public float smokeFadeTime = 1f;
+	public float smokeInTime = 1f;
 
 	[Tooltip("How long the fully appeared smoke remains before disappearing")]
 	public float smokeHoldTime = 1f;
+
+	[Tooltip("How long it takes the smoke to fully disappear")]
+	public float smokeOutTime = 1f;
 
 	[Tooltip("The number of hit points the target has")]
 	public uint hp = 10;
@@ -22,6 +25,9 @@ public class Target : MonoBehaviour {
 
 	// The cloud sprite.
 	private SpriteRenderer cloud;
+
+	// The cloud dispersal particles.
+	private ParticleSystem cloudDispersal;
 
 	void Start() {
 		List<SpriteRenderer> inputs_ = new List<SpriteRenderer>();
@@ -38,6 +44,7 @@ public class Target : MonoBehaviour {
 		}
 		inputs = inputs_.ToArray();
 		outputs = outputs_.ToArray();
+		cloudDispersal = transform.Find("Cloud Dispersal").GetComponent<ParticleSystem>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -51,24 +58,44 @@ public class Target : MonoBehaviour {
 	}
 
 	private IEnumerator<WaitForSeconds> AnimateSolving() {
+		// Fade in.
 		cloud.enabled = true;
 		{
-			float smokeCounter = 0f;
-			while(smokeCounter < smokeFadeTime) {
-				smokeCounter += Time.deltaTime;
+			float counter = 0f;
+			while(counter < smokeInTime) {
+				counter += Time.deltaTime;
 				Color c = cloud.color;
-				c.a = Mathf.Min(1f, smokeCounter / smokeFadeTime);
+				c.a = Mathf.Min(1f, counter / smokeInTime);
 				cloud.color = c;
 				yield return null;
 			}
 		}
+
+		// Hold.
 		yield return new WaitForSeconds(smokeHoldTime);
+
+		// Swap animals.
 		foreach(SpriteRenderer i in inputs) {
 			i.enabled = false;
 		}
 		foreach(SpriteRenderer i in outputs) {
 			i.enabled = true;
 		}
+
+		// Fade out with particle burst.
+		cloudDispersal.Play();
+		{
+			float counter = smokeOutTime;
+			while(counter > 0) {
+				counter -= Time.deltaTime;
+				Color c = cloud.color;
+				c.a = Mathf.Max(0f, counter / smokeOutTime);
+				cloud.color = c;
+				yield return null;
+			}
+		}
+
+		// Kill cloud completely.
 		cloud.enabled = false;
 	}
 }
