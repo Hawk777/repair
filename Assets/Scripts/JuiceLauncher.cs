@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class JuiceLauncher : MonoBehaviour {
 	[Tooltip("The angular velocity at which juice starts dispensing")]
-	public float threshold = 100f;
+	public float threshold = 70f;
 
 	[Tooltip("The scale factor for distance in world units between car and juice splatter, as a product of angular velocity")]
 	public float scale = 0.2f;

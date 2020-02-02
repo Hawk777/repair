@@ -19,11 +19,15 @@ public class car : MonoBehaviour
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
     private Rigidbody2D rb2D;
+    private Transform liquid;
+    private JuiceLauncher launcher;
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+        liquid = transform.Find("carliquid");
+        launcher = GetComponent<JuiceLauncher>();
     }
 
     // Update is called once per frame
@@ -78,7 +82,7 @@ public class car : MonoBehaviour
         {
             // push car by currentAccel units in the direction of its facing
             //transform.eulerAngles = new Vector3(0, 0, degreeOfFacing);
-            force = new Vector2(Mathf.Cos((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad), Mathf.Sin((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad));
+            force = new Vector2(-Mathf.Sin((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad), Mathf.Cos((rb2D.rotation - turn * axleTurn) * Mathf.Deg2Rad));
             rb2D.AddForce(force * currentAccel);
             //rb2D.MoveRotation(degreeOfFacing + turn * turnAngle * Mathf.Min(maxAccel, currentAccel) / maxAccel);
             rb2D.AddTorque(-turn* turnAngle*rb2D.mass);
@@ -95,6 +99,9 @@ public class car : MonoBehaviour
             if (rb2D.angularVelocity < -maxHyperAngularVelocity) rb2D.angularVelocity = -maxHyperAngularVelocity;
         }
 
+
+        liquid.localScale = new Vector3(0.5f * launcher.tankLevel / launcher.tankCapacity, 0.5f * launcher.tankLevel / launcher.tankCapacity,1);
+        liquid.GetComponent<SpriteRenderer>().color = launcher.juiceType.color;
         //TODO: check the tag of the road we're on, and change acceleration/velocity/angularVelocity accordingly
     }
 }
