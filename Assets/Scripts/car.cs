@@ -30,6 +30,7 @@ public class car : MonoBehaviour
     private JuiceLauncher launcher;
     private GameObject lightParticles;
     private GameObject heavyParticles;
+    private GameObject kaboom;
     private GameManager manager;
     private int turn, forward;
     // Start is called before the first frame update
@@ -41,11 +42,13 @@ public class car : MonoBehaviour
         launcher = GetComponent<JuiceLauncher>();
         GameObject mini = Instantiate(minimapSprite, transform.position, Quaternion.identity, transform);
         mini.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-        currentHealth = 5;
+        currentHealth = maxHealth;
         lightParticles = GameObject.Find("Light Smoke");
         heavyParticles = GameObject.Find("Heavy Smoke");
+        kaboom = GameObject.Find("Explosion");
         lightParticles.GetComponent<ParticleSystem>().Stop();
         heavyParticles.GetComponent<ParticleSystem>().Stop();
+        kaboom.GetComponent<ParticleSystem>().Stop();
         manager = GameManager.get();
     }
 
@@ -128,6 +131,7 @@ public class car : MonoBehaviour
                 // play explosion, set game over
                 manager.LoseByCar();
                 heavyParticles.GetComponent<ParticleSystem>().Stop();
+                kaboom.GetComponent<ParticleSystem>().Play();
             }
             else if (currentHealth <= 2)
             {
