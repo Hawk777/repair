@@ -4,7 +4,7 @@ public class JuiceLauncher : MonoBehaviour {
 	[Tooltip("The angular velocity at which juice starts dispensing")]
 	public float threshold = 100f;
 
-	[Tooltip("The scale factor for distance in world units between car and juice splatter, as a product of angular velocity above threshold")]
+	[Tooltip("The scale factor for distance in world units between car and juice splatter, as a product of angular velocity")]
 	public float scale = 0.2f;
 
 	[Tooltip("The number of seconds between consecutive splatters")]
@@ -43,7 +43,7 @@ public class JuiceLauncher : MonoBehaviour {
 			Rigidbody2D body = GetComponent<Rigidbody2D>();
 			float avel = body.angularVelocity;
 			if(Mathf.Abs(avel) >= threshold) {
-				float distance = (avel - Mathf.Sign(avel) * threshold) * scale;
+				float distance = avel * scale;
 				Vector2 target = body.GetRelativePoint(sideVector * distance);
 				GameObject obj = Instantiate(splatterPrefabs[Random.Range(0, splatterPrefabs.Length)], target, Quaternion.identity, null);
 				obj.GetComponent<SpriteRenderer>().color = juiceType.color;
