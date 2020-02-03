@@ -27,6 +27,9 @@ public class car : MonoBehaviour
 	[Tooltip("The distance to an enemy or target to be considered on-screen")]
 	public float nearbyDistance = 150f;
 
+	[Tooltip("How fast is moving fast for music")]
+	public float fastThreshold = 30f;
+
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
     private Rigidbody2D rb2D;
@@ -168,6 +171,7 @@ public class car : MonoBehaviour
 			}
 			MusicManager.Get().SetEnemiesNearby(any);
 		}
+		MusicManager.Get().SetCarMoving(rb2D.velocity.sqrMagnitude >= fastThreshold * fastThreshold);
 	}
 
     void TakeDamage()
