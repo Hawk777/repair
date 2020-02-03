@@ -10,11 +10,13 @@ public class MenuManager : MonoBehaviour {
 
 	// Goes to the first level.
 	public void FirstLevel() {
+		MusicManager.Get().SwitchScene(firstLevel);
 		SceneManager.LoadSceneAsync(firstLevel);
 	}
 
 	// Goes to the main menu.
 	public void MainMenu() {
+		MusicManager.Get().SwitchScene(mainMenu);
 		SceneManager.LoadSceneAsync(mainMenu);
 	}
 

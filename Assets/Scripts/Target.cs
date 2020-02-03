@@ -61,6 +61,7 @@ public class Target : MonoBehaviour {
 				GetComponent<Rigidbody2D>().simulated = false;
 				solved = true;
 				manager.CheckTargets();
+				MusicManager.Get().TargetSolved();
 				StartCoroutine(AnimateSolving());
 			}
 		}

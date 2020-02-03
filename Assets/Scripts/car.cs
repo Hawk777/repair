@@ -19,9 +19,10 @@ public class car : MonoBehaviour
 
     static int maxHealth = 5;
     public int currentHealth;
-    static uint defaultInvuln = 240;
-    uint invuln = 0;
-    [SerializeField] int damagingVelocity = 20;
+    static uint defaultInvuln = 120;
+    float invuln = 0;
+    static int damagingVelocity = 5;
+    static int highSpeed = 60;
 
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
@@ -50,6 +51,7 @@ public class car : MonoBehaviour
         heavyParticles.GetComponent<ParticleSystem>().Stop();
         kaboom.GetComponent<ParticleSystem>().Stop();
         manager = GameManager.get();
+
     }
 
     // Update is called once per frame
@@ -116,8 +118,20 @@ public class car : MonoBehaviour
             liquid.localScale = new Vector3(0.5f * launcher.tankLevel / launcher.tankCapacity, 0.5f * launcher.tankLevel / launcher.tankCapacity, 1);
             liquid.GetComponent<SpriteRenderer>().color = launcher.juiceType.color;
 
-            if (invuln > 0) invuln--;
-            //TODO: check the tag of the road we're on, and change acceleration/velocity/angularVelocity accordingly
+            if (invuln > 0) invuln-= Time.deltaTime;
+        /*    
+            // check rb2D.velocity.magnitude and angular velocity, play an appropriate sound if nothing is playing (check w/ IsPlaying)
+        if (!source.isPlaying){
+            // play drive if at max velocity, play rev if approaching max velocity, play skid if angular velocity is at maxAngularVelocity, play hardSkid if at maxHyperAngularVelocity, play idle if no buttons are being pushed
+            if (rb2D.angularVelocity >= maxHyperAngularVelocity) source.PlayOneShot(hardSkid);
+            else if (rb2D.angularVelocity >= maxAngularVelocity) source.PlayOneShot(skid);
+            else if (forward < 0) source.PlayOneShot(skid); // plays skid on braking
+            else if (rb2D.velocity.magnitude > highSpeed) source.PlayOneShot(drive);
+            else if (forward == 1) source.PlayOneShot(rev);
+            else if (forward == 0 && turn == 0) source.PlayOneShot(idle);
+            
+        }
+        */
     }
 
     void TakeDamage()
@@ -152,8 +166,21 @@ public class car : MonoBehaviour
         if (rb2D.velocity.magnitude > damagingVelocity || collision.gameObject.tag == "Enemy")
         {
             rb2D.AddForceAtPosition(new Vector2(0, 100), collision.gameObject.transform.position); // vector2 is speculative, but will push car away from collision
+            // cut whatever's currently playing, if possible
+            //source.PlayOneShot(smallImpact);
             TakeDamage();
         }
     }
     
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            // call appropriate function to MusicManager that an enemy is nearby
+        }
+        if (other.gameObject.tag == "Target")
+        {
+            // call appropriate f'n to MusicManager
+        }
+    }
 }
