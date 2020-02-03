@@ -654,7 +654,14 @@ MonoBehaviour:
   minimapSprite: {fileID: 6495128131621739188, guid: 585b8ba3b949453458091658ad39ac36,
     type: 3}
   currentHealth: 0
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: dcbb502ea96812f5196bb8b6ce4935ce, type: 3}
+  - {fileID: 8300000, guid: 87187432cd6c10073bdcc064a25c8863, type: 3}
+  - {fileID: 8300000, guid: 2cecbd9230ad2975796e1d7721cd0070, type: 3}
+  - {fileID: 8300000, guid: eefaa50f42139d1369a82c9c07f3328c, type: 3}
+  - {fileID: 8300000, guid: 64b02a2500f447920bbaf42fbff340df, type: 3}
+  - {fileID: 8300000, guid: 623eebfbe97b934328c80abba6787876, type: 3}
+  - {fileID: 8300000, guid: 64566f4225de3464489248aaeba17e1d, type: 3}
   nearbyDistance: 150
   fastThreshold: 30
 --- !u!114 &7152074807759371041
