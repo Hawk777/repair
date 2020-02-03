@@ -24,6 +24,9 @@ public class car : MonoBehaviour
     static int damagingVelocity = 5;
     static int highSpeed = 60;
 
+	[Tooltip("The distance to an enemy or target to be considered on-screen")]
+	public float nearbyDistance = 150f;
+
     private float necessaryAngularVelocity; //how much angular velocity you need to start throwing juice
     private BoxCollider2D boxCollider; // don't forget to put everything that can collide with the car on the same layer
     private Rigidbody2D rb2D;
@@ -34,6 +37,9 @@ public class car : MonoBehaviour
     private GameObject kaboom;
     private GameManager manager;
     private int turn, forward;
+
+	private GameObject[] targets, enemies;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +57,8 @@ public class car : MonoBehaviour
         heavyParticles.GetComponent<ParticleSystem>().Stop();
         kaboom.GetComponent<ParticleSystem>().Stop();
         manager = GameManager.get();
+		targets = GameObject.FindGameObjectsWithTag("Target");
+		enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
     }
 
@@ -133,6 +141,34 @@ public class car : MonoBehaviour
         }
         */
     }
+
+	void Update() {
+		float nearbySq = nearbyDistance * nearbyDistance;
+		{
+			bool any = false;
+			foreach(GameObject i in targets) {
+				if(i != null) {
+					if(((Vector2) i.transform.position - rb2D.position).sqrMagnitude <= nearbySq) {
+						any = true;
+						break;
+					}
+				}
+			}
+			MusicManager.Get().SetTargetsNearby(any);
+		}
+		{
+			bool any = false;
+			foreach(GameObject i in enemies) {
+				if(i != null) {
+					if(((Vector2) i.transform.position - rb2D.position).sqrMagnitude <= nearbySq) {
+						any = true;
+						break;
+					}
+				}
+			}
+			MusicManager.Get().SetEnemiesNearby(any);
+		}
+	}
 
     void TakeDamage()
     {
