@@ -189,7 +189,7 @@ public class car : MonoBehaviour
 
     void TakeDamage()
     {
-        if (invuln == 0)
+        if (invuln <= 0)
         {
             currentHealth--;
             invuln = defaultInvuln;
