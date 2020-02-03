@@ -23,6 +23,8 @@ public class car : MonoBehaviour
     float invuln = 0;
     static int damagingVelocity = 5;
     static int highSpeed = 60;
+    public AudioClip[] clips;
+
 
 	[Tooltip("The distance to an enemy or target to be considered on-screen")]
 	public float nearbyDistance = 150f;
@@ -42,6 +44,7 @@ public class car : MonoBehaviour
     private int turn, forward;
 
 	private GameObject[] targets, enemies;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +65,7 @@ public class car : MonoBehaviour
         manager = GameManager.get();
 		targets = GameObject.FindGameObjectsWithTag("Target");
 		enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -143,6 +146,15 @@ public class car : MonoBehaviour
             
         }
         */
+        if (!source.isPlaying)
+        {
+            if (rb2D.angularVelocity >= maxHyperAngularVelocity) source.PlayOneShot(clips[4]);
+            else if (rb2D.angularVelocity >= maxAngularVelocity) source.PlayOneShot(clips[5]);
+            else if (forward < 0) source.PlayOneShot(clips[5]); // plays skid on braking
+            else if (rb2D.velocity.magnitude > highSpeed) source.PlayOneShot(clips[0]);
+            else if (forward == 1) source.PlayOneShot(clips[3]);
+            else if (forward == 0 && turn == 0) source.PlayOneShot(clips[2]);
+        }
     }
 
 	void Update() {
@@ -172,7 +184,8 @@ public class car : MonoBehaviour
 			MusicManager.Get().SetEnemiesNearby(any);
 		}
 		MusicManager.Get().SetCarMoving(rb2D.velocity.sqrMagnitude >= fastThreshold * fastThreshold);
-	}
+
+    }
 
     void TakeDamage()
     {
@@ -180,11 +193,14 @@ public class car : MonoBehaviour
         {
             currentHealth--;
             invuln = defaultInvuln;
+            source.Stop();
+            source.PlayOneShot(clips[1]);
             if (currentHealth == 0)
             {
                 // play explosion, set game over
                 manager.LoseByCar();
                 heavyParticles.GetComponent<ParticleSystem>().Stop();
+                
                 kaboom.GetComponent<ParticleSystem>().Play();
             }
             else if (currentHealth <= 2)
