@@ -194,9 +194,11 @@ public class car : MonoBehaviour
             currentHealth--;
             invuln = defaultInvuln;
             source.Stop();
-            source.PlayOneShot(clips[1]);
+            source.PlayOneShot(clips[6]);
             if (currentHealth == 0)
             {
+				source.Stop();
+				source.PlayOneShot(clips[1]);
                 // play explosion, set game over
                 manager.LoseByCar();
                 heavyParticles.GetComponent<ParticleSystem>().Stop();
