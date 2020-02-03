@@ -318,6 +318,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5241790426900765371, guid: 364fdbc98059e5443865a94663133638,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7524878794055328116, guid: 364fdbc98059e5443865a94663133638,
         type: 3}
       propertyPath: m_Sprite
