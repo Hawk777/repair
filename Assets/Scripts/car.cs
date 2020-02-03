@@ -19,7 +19,7 @@ public class car : MonoBehaviour
 
     static int maxHealth = 5;
     public int currentHealth;
-    static uint defaultInvuln = 120;
+    static uint defaultInvuln = 5;
     float invuln = 0;
     static int damagingVelocity = 5;
     static int highSpeed = 60;
