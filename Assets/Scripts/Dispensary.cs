@@ -31,10 +31,11 @@ public class Dispensary : MonoBehaviour
 
     }
 
-    void OnTriggerStay2D()
+    void OnTriggerStay2D(Collider2D coll)
     {
-        launcher = FindObjectOfType<JuiceLauncher>();
-        fill();
+        if(coll.gameObject.TryGetComponent<JuiceLauncher>(out launcher)) {
+			fill();
+		}
     }
     void fill()
     {
