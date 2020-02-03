@@ -30,9 +30,6 @@ public class MusicManager : MonoBehaviour {
 	// The target enablements of the layers./
 	private bool[] layersEnabled;
 
-	// Whether the car is drifting at this moment.
-	private bool driftingNow = false;
-
 	// For how long the car has been continuously drifting.
 	private float driftTime = 0f;
 
@@ -47,7 +44,6 @@ public class MusicManager : MonoBehaviour {
 	// Handles switching scenes.
 	public void SwitchScene(string scene) {
 		// After a scene switch, we are not drifting.
-		driftingNow = false;
 		driftTime = 0f;
 
 		// Layer 0 is always enabled. Ignore it. Layer 1 is enabled if not at
@@ -67,17 +63,6 @@ public class MusicManager : MonoBehaviour {
 	// called at other times.
 	public void SetCarMoving(bool moving) {
 		layersEnabled[2] = moving;
-	}
-
-	// Reports whether the car is drifting.
-	//
-	// This should be called when entering or exiting drift mode, and may also
-	// be called at other times.
-	public void SetCarDrifting(bool drifting) {
-		driftingNow = drifting;
-		if(!drifting) {
-			driftTime = 0f;
-		}
 	}
 
 	// Reports whether there are any enemies near the car.
@@ -121,8 +106,10 @@ public class MusicManager : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if(driftingNow) {
+		if(Input.GetButton("Fire1")) {
 			driftTime += Time.fixedDeltaTime;
+		} else{
+			driftTime = 0f;
 		}
 
 		if(solveCounter > 0f) {
